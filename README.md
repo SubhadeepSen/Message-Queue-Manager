@@ -27,3 +27,20 @@
 - Open __http://localhost:8085/message-queue-manager/api/swagger-ui.html__ for API documentation
 
 <div style="text-align:center"><img src="https://github.com/SubhadeepSen/Message-Queue-Manager/blob/master/Queue-Manager-Swagger.jpg" /></div>
+
+
+## Message-Queue-Manager-UI
+
+#### Provides a UI interface to interact with the API. It has been developed in Angular v 7
+
+#### Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
