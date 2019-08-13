@@ -1,6 +1,6 @@
 ## Message-Queue-Manager
 
-#### It manages multiple queues where one can create a queue, post and consume message from a queue and delete a queue.
+#### It manages multiple queues where one can create a queue, post and consume message from a queue, list down all the available queues, list down all the messages from a queue and delete a queue.
 #### Check the Swagger image for avaliabe operations.
 
 #### Swagger URL: http://localhost:8085/message-queue-manager/api/swagger-ui.html
