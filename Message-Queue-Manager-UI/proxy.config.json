@@ -1,0 +1,8 @@
+{
+    "/message-queue-manager/api/*":{
+        "target": "http://localhost:8085",
+        "changeOrigin": true,
+        "secure": false,
+        "logLevel": "debug"
+    }
+}
