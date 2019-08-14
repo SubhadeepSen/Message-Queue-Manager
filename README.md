@@ -25,6 +25,7 @@
 - Change the directory to target
 - Run __java -jar Message-Queue-Manager-API-0.0.1-SNAPSHOT__ to deploy the application in embedded tomcat
 - Open __http://localhost:8085/message-queue-manager/api/swagger-ui.html__ for API documentation
+- Authorization: Basic cXVldWUtbWFuYWdlcjpxdWV1ZU1hbmFnZXJAMTIzNDU=
 
 <div style="text-align:center"><img src="https://github.com/SubhadeepSen/Message-Queue-Manager/blob/master/Queue-Manager-Swagger.jpg" /></div>
 
