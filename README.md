@@ -21,11 +21,11 @@
 
 - Clone the repository
 - Open command prompt pointing to Message-Queue-Manager-API directory
-- Run __mvn clean install__ to build the project
+- Run ___mvn clean install___ to build the project
 - Change the directory to target
-- Run __java -jar Message-Queue-Manager-API-0.0.1-SNAPSHOT__ to deploy the application in embedded tomcat
+- Run ___java -jar Message-Queue-Manager-API-0.0.1-SNAPSHOT___ to deploy the application in embedded tomcat
 - Open __http://localhost:8085/message-queue-manager/api/swagger-ui.html__ for API documentation
-- Authorization: Basic cXVldWUtbWFuYWdlcjpxdWV1ZU1hbmFnZXJAMTIzNDU=
+- Authorization: ___Basic cXVldWUtbWFuYWdlcjpxdWV1ZU1hbmFnZXJAMTIzNDU=___
 
 <div style="text-align:center"><img src="https://github.com/SubhadeepSen/Message-Queue-Manager/blob/master/Queue-Manager-Swagger.jpg" /></div>
 
