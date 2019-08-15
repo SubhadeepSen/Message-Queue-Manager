@@ -1,13 +1,12 @@
 ## Message-Queue-Manager
 
 #### It manages multiple queues where one can create a queue, post and consume message from a queue, list down all the available queues, list down all the messages from a queue and delete a queue.
-#### Check the Swagger image for avaliabe operations.
+#### Check the attached images for avaliabe operations.
 
-#### Swagger URL: http://localhost:8085/message-queue-manager/api/swagger-ui.html
 
-## Technical Descriptions
+## Message-Queue-Manager-API
 
-#### _Database:_ In memmory Mongo DB which can easily be replaced with persistent database just by changing a simple configuration.
+#### _Database:_ In memory Mongo DB which can easily be replaced with persistent database just by changing a simple configuration.
 - Mongo DB
 #### _API:_ Springboot v 2.1.4 
 - Springboot-Web
@@ -32,16 +31,13 @@
 
 ## Message-Queue-Manager-UI
 
-#### Provides a UI interface to interact with the API. It has been developed in Angular v 7
+#### Provides an interactive user interface to interact with the API. It has been developed in Angular v 7
 
-#### Development server
+## Instructions for UI
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Open command prompt pointing to Message-Queue-Manager-UI directory
+- Run ___npm install___ to build the project
+- Run ___npm start___ to deploy the UI application
+- Open __http://localhost:4425/MessageQueueManagerUI/__ to launch the Application
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+<div style="text-align:center"><img src="https://github.com/SubhadeepSen/Message-Queue-Manager/blob/master/Queue-Manager-UI.jpg" /></div>
