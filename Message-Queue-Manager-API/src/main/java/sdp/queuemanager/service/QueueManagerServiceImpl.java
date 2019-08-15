@@ -33,6 +33,11 @@ public class QueueManagerServiceImpl implements QueueManagerService {
 
 	@Override
 	public QueueInfo createMessageQueue(String queueName) throws QueueManagerException {
+		if (null == queueName || queueName.isEmpty()) {
+			LOG.info("Invalid queue name: " + queueName + " > " + ErrorCodes.INVALID);
+			throw new QueueManagerException("Invalid queue name: " + queueName, ErrorCodes.INVALID,
+					HttpStatus.BAD_REQUEST);
+		}
 		if (isQueueExist(queueName)) {
 			LOG.info("Duplicate queue name: " + queueName + " > " + ErrorCodes.DUPLICATE);
 			throw new QueueManagerException("Duplicate queue name: " + queueName, ErrorCodes.DUPLICATE,
@@ -49,9 +54,15 @@ public class QueueManagerServiceImpl implements QueueManagerService {
 
 	@Override
 	public Message publishMessageToQueue(Message message) throws QueueManagerException {
-		if (!isQueueExist(message.getQueueName())) {
-			LOG.info("Queue does not exist: " + message.getQueueName() + " > " + ErrorCodes.NOT_EXIST);
-			throw new QueueManagerException("Queue does not exist: " + message.getQueueName(), ErrorCodes.NOT_EXIST,
+		String queueName = message.getQueueName();
+		if (null == queueName || queueName.isEmpty()) {
+			LOG.info("Invalid queue name: " + queueName + " > " + ErrorCodes.INVALID);
+			throw new QueueManagerException("Invalid queue name: " + queueName, ErrorCodes.INVALID,
+					HttpStatus.BAD_REQUEST);
+		}
+		if (!isQueueExist(queueName)) {
+			LOG.info("Queue does not exist: " + queueName + " > " + ErrorCodes.NOT_EXIST);
+			throw new QueueManagerException("Queue does not exist: " + queueName, ErrorCodes.NOT_EXIST,
 					HttpStatus.BAD_REQUEST);
 		}
 		if (isMessageExist(message)) {
@@ -59,12 +70,17 @@ public class QueueManagerServiceImpl implements QueueManagerService {
 			throw new QueueManagerException("Duplicate message : " + message.getMessage(), ErrorCodes.DUPLICATE,
 					HttpStatus.BAD_REQUEST);
 		}
-		message.setMessageId(String.valueOf(getNextMessageId(message.getQueueName())));
+		message.setMessageId(String.valueOf(getNextMessageId(queueName)));
 		return mongoTemplate.insert(message, QueueManagerConstants.MESSAGE_COLLECTION);
 	}
 
 	@Override
 	public List<Message> retrieveMessages(String queueName) {
+		if (null == queueName || queueName.isEmpty()) {
+			LOG.info("Invalid queue name: " + queueName + " > " + ErrorCodes.INVALID);
+			throw new QueueManagerException("Invalid queue name: " + queueName, ErrorCodes.INVALID,
+					HttpStatus.BAD_REQUEST);
+		}
 		if (!isQueueExist(queueName)) {
 			LOG.info("Queue does not exist: " + queueName + " > " + ErrorCodes.NOT_EXIST);
 			throw new QueueManagerException("Queue does not exist: " + queueName, ErrorCodes.NOT_EXIST,
@@ -77,6 +93,11 @@ public class QueueManagerServiceImpl implements QueueManagerService {
 
 	@Override
 	public List<Message> retrieveMessagesByPage(String queueName, int page, int pageSize) {
+		if (null == queueName || queueName.isEmpty()) {
+			LOG.info("Invalid queue name: " + queueName + " > " + ErrorCodes.INVALID);
+			throw new QueueManagerException("Invalid queue name: " + queueName, ErrorCodes.INVALID,
+					HttpStatus.BAD_REQUEST);
+		}
 		if (!isQueueExist(queueName)) {
 			LOG.info("Queue does not exist: " + queueName + " > " + ErrorCodes.NOT_EXIST);
 			throw new QueueManagerException("Queue does not exist: " + queueName, ErrorCodes.NOT_EXIST,

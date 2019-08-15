@@ -14,13 +14,13 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import sdp.queuemanager.model.Message;
 import sdp.queuemanager.model.QueueInfo;
-import sdp.queuemanager.service.QueueManagerServiceImpl;
+import sdp.queuemanager.service.QueueManagerService;
 
 @RestController
 public class QueueManagerController {
 
 	@Autowired
-	private QueueManagerServiceImpl queueManagerService;
+	private QueueManagerService queueManagerService;
 
 	@ApiOperation(value = "Create Message Queue")
 	@ApiImplicitParam(required = true, name = "Authorization", paramType = "header")
