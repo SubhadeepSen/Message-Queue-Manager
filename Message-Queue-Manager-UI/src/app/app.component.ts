@@ -19,6 +19,8 @@ export class AppComponent {
   displayDeleteBtn = false;
   error = false;
   errorMessage = '';
+  success = false;
+  successMessage = '';
 
   constructor(private queueManagerServiceService: QueueManagerServiceService) {
     queueManagerServiceService.getMessageQueues().subscribe(res => {
@@ -27,8 +29,15 @@ export class AppComponent {
   }
 
   createQueue() {
+    if (this.newQueueName === '') {
+      this.error = true;
+      this.errorMessage = 'Invalid queue name.';
+      return;
+    }
     this.queueManagerServiceService.createMessageQueue(this.newQueueName).subscribe(res => {
       this.queues.push(res);
+      this.success = true;
+      this.successMessage = `Queue with queue name "${res.queueName}" has been created.`
     }, (err: HttpErrorResponse) => {
       this.error = true;
       this.errorMessage = err.error.message;
@@ -43,6 +52,8 @@ export class AppComponent {
           this.queues.splice(index, 1);
           this.displayDeleteBtn = false;
           this.messages = [];
+          this.success = true;
+          this.successMessage = `Queue with queue name "${this.selectedQueue}" has been deleted.`;
           this.selectedQueue = '';
         }
       }, (err: HttpErrorResponse) => {
@@ -80,13 +91,28 @@ export class AppComponent {
   }
 
   consumeMessage() {
-    /* this.queueManagerServiceService.consumeMessage("test1").subscribe(msg => { 
-           console.log(msg.messageId + " > " + msg.message);
-       }); */
+    this.queueManagerServiceService.consumeMessage(this.selectedQueue).subscribe(msg => {
+      let index = this.messages.indexOf(this.messages.filter(m => m.queueName === this.selectedQueue)[0]);
+      this.messages.splice(index, 1);
+      this.success = true;
+      this.successMessage = `${msg.message} from "${msg.queueName}" has been consumed.`;
+    }, (err: HttpErrorResponse) => {
+      this.error = true;
+      this.errorMessage = err.error.message;
+    });
   }
 
-  hideError() {
-    this.error = false;
-    this.errorMessage = '';
+  hideSuccessNotification() {
+    if (this.success) {
+      this.success = false;
+      this.successMessage = '';
+    }
+  }
+
+  hideErrorNotification() {
+    if (this.error) {
+      this.error = false;
+      this.errorMessage = '';
+    }
   }
 }
